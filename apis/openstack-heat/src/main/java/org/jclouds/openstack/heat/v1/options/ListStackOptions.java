@@ -157,6 +157,14 @@ public class ListStackOptions extends PaginationOptions {
       return this;
    }
 
+    /**
+     * Return all the stack of all the tenant
+     */
+    public ListStackOptions isGlobalTenant(Boolean globalTenant) {
+        this.queryParameters.put("global_tenant", globalTenant !=null ? Boolean.toString(globalTenant) : "false");
+        return this;
+    }
+
    /**
     * Sorts the stack list by one of these attributes:
     * name, status, created_at, or updated_at
@@ -224,5 +232,11 @@ public class ListStackOptions extends PaginationOptions {
          return new ListStackOptions().sortDirection(direction);
       }
 
+      /**
+       * @see ListStackOptions#isGlobalTenant(Boolean
+       */
+      public static ListStackOptions isGlobalTenant(Boolean globalTenant) {
+         return new ListStackOptions().isGlobalTenant(globalTenant);
+      }
    }
 }

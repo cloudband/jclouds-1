@@ -25,6 +25,7 @@ import org.jclouds.openstack.heat.v1.domain.Stack;
 import org.jclouds.openstack.heat.v1.domain.StackResource;
 import org.jclouds.openstack.heat.v1.internal.BaseHeatApiLiveTest;
 import org.jclouds.openstack.heat.v1.options.CreateStackOptions;
+import org.jclouds.openstack.heat.v1.options.ListStackOptions;
 import org.jclouds.openstack.heat.v1.options.UpdateOptions;
 import org.jclouds.util.Strings2;
 import org.json.simple.JSONObject;
@@ -57,6 +58,16 @@ public class StackApiLiveTest extends BaseHeatApiLiveTest {
          StackApi stackApi = api.getStackApi(region);
 
          List<Stack> stacks = stackApi.list().toList();
+
+         assertThat(stacks).isNotNull();
+      }
+   }
+
+   public void testListGlobalTenant() {
+      for (String region : api.getConfiguredRegions()) {
+         StackApi stackApi = api.getStackApi(region);
+         ListStackOptions listStackOptions = ListStackOptions.builder().isGlobalTenant(true);
+         List<Stack> stacks = stackApi.list(listStackOptions).toList();
 
          assertThat(stacks).isNotNull();
       }
