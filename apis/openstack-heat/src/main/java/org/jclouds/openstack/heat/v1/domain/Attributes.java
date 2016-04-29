@@ -34,7 +34,7 @@ public class Attributes extends Resource {
 
 	@ConstructorProperties({ "id", "name","links","progress", "status", "config_drive",
 			"tenant_id", "host_id", "created", "user_id"})
-	protected Attributes(String id,String name, Set<Link> links, String progress, String status,
+	public Attributes(String id,String name, Set<Link> links, String progress, String status,
 			String configDrive, String tenantId, String hostId,String created, String userId) {
 		super(id, name, links);
 		this.progress = progress;
