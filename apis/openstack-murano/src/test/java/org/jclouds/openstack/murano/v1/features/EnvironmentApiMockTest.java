@@ -30,7 +30,9 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.testng.Assert.assertEquals;
@@ -364,7 +366,11 @@ public class EnvironmentApiMockTest extends BaseMuranoApiMockTest {
          MuranoPackage muranoPackage1 = new MuranoPackage(TEST_PACKAGE_ID, "PACKAGE_NAME", null, null, null, new Date(), true, null, new
                Date(), null, true, "io.murano.apps.generated.Vol3", "", "");
 
-         AddApplicationOptions addApplicationOptions = AddApplicationOptions.Builder.muranoPackage(muranoPackage1, "APP_NAME");
+         Map<String,Object> templateParameters = new HashMap<String,Object>();
+         templateParameters.put("flavor","SMALL_1");
+         templateParameters.put("name","test_vm");
+
+         AddApplicationOptions addApplicationOptions = AddApplicationOptions.Builder.muranoPackage(muranoPackage1, "APP_NAME",templateParameters);
          Object addApplicationBlob = api.addApplication(TEST_ENVIRONMENT_ID, TEST_SESSION_ID, addApplicationOptions);
 
          // Check request

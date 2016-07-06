@@ -133,7 +133,7 @@ public class EnvironmentApiLiveTest extends BaseMuranoApiLiveTest {
                .enabled(true)
                .isPublic(true);
          MuranoPackage muranoPackage = muranoPackageApi.create(createPackageOptions, Files.readAllBytes(file.toPath()));
-         AddApplicationOptions addApplicationOptions = AddApplicationOptions.Builder.muranoPackage(muranoPackage, APP_NAME, ENV_NAME);
+         AddApplicationOptions addApplicationOptions = AddApplicationOptions.Builder.muranoPackage(muranoPackage,APP_NAME,null, ENV_NAME);
          Session configure = environmentApi.configure(createdEnvironment.getId());
 
          Object addedApplication = environmentApi.addApplication(createdEnvironment.getId(), configure.getId(), addApplicationOptions);

@@ -1,6 +1,10 @@
 {
   "generatedHeatStackName": "heatStackName",
   "name": "APP_NAME",
+  "templateParameters": {
+        "flavor": "SMALL_1",
+        "name": "test_vm"
+  },
   "hotEnvironment": "ENV_NAME",
   "?": {
     "_26411a1861294160833743e45d0eaad9": {
