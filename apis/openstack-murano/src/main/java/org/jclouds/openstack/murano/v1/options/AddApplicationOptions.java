@@ -41,6 +41,11 @@ public class AddApplicationOptions implements MapBinder {
    @Inject
    private BindToJsonPayload jsonBinder;
 
+   @Nullable
+   @Named("templateParameters")
+   protected Map<String, Object> templateParameters = ImmutableMap.of();
+
+
    protected String name;
 
    @Nullable
@@ -50,6 +55,8 @@ public class AddApplicationOptions implements MapBinder {
    protected Map<String, Object> properties = ImmutableMap.of();
 
    static class AddApplicationRequest {
+      @Nullable
+      Map<String, Object> templateParameters = ImmutableMap.of();
       String name;
       @Nullable
       String hotEnvironment;
@@ -61,6 +68,9 @@ public class AddApplicationOptions implements MapBinder {
    public <R extends HttpRequest> R bindToRequest(R request, Map<String, Object> postParams) {
 
       AddApplicationRequest addApplicationRequest = new AddApplicationRequest();
+      if (templateParameters != null) {
+           addApplicationRequest.templateParameters = templateParameters;
+      }
       if (name != null) {
          addApplicationRequest.name = name;
       }
@@ -86,6 +96,14 @@ public class AddApplicationOptions implements MapBinder {
       return this;
    }
 
+    /**
+     * @param templateParameters - the templateParameters of the application to be added.
+     */
+    public AddApplicationOptions templateParameters(Map<String,Object> templateParameters) {
+        this.templateParameters = templateParameters;
+        return this;
+    }
+
    /**
     * @param name - the name of the application to be added.
     */
@@ -101,6 +119,10 @@ public class AddApplicationOptions implements MapBinder {
       this.hotEnvironment = hotEnvironment;
       return this;
    }
+
+    public Map<String, Object> getTemplateParameters() {
+        return templateParameters;
+    }
 
    public String getName() {
       return name;
@@ -119,6 +141,7 @@ public class AddApplicationOptions implements MapBinder {
    protected Objects.ToStringHelper string() {
       return toStringHelper("")
             .add("jsonBinder", jsonBinder)
+            .add("templateParameters", templateParameters)
             .add("name", name)
             .add("hotEnvironment", hotEnvironment)
             .add("properties", properties);
@@ -134,11 +157,11 @@ public class AddApplicationOptions implements MapBinder {
       private static final String TYPE = "type";
       private static final String ID = "id";
 
-      public static AddApplicationOptions muranoPackage(MuranoPackage muranoPackage, String name) {
-         return muranoPackage(muranoPackage, name, null);
+      public static AddApplicationOptions muranoPackage(MuranoPackage muranoPackage, String name,Map<String,Object> templateParameters) {
+         return muranoPackage(muranoPackage, name,templateParameters, null);
       }
 
-      public static AddApplicationOptions muranoPackage(MuranoPackage muranoPackage, String name, @Nullable String environmentName) {
+      public static AddApplicationOptions muranoPackage(MuranoPackage muranoPackage, String name,@Nullable Map<String,Object> templateParameters,@Nullable String environmentName) {
          Map<String, Object> properties = Maps.newHashMap();
          properties.put(TYPE, muranoPackage.getFullyQualifiedName());
          properties.put(ID, muranoPackage.getId());
@@ -146,6 +169,9 @@ public class AddApplicationOptions implements MapBinder {
          if (environmentName != null) {
             addApplicationOptions.hotEnvironment(environmentName);
          }
+          if (templateParameters != null) {
+              addApplicationOptions.templateParameters(templateParameters);
+          }
          return addApplicationOptions;
 
       }
@@ -163,6 +189,13 @@ public class AddApplicationOptions implements MapBinder {
       public static AddApplicationOptions name(String name) {
          return new AddApplicationOptions().name(name);
       }
+
+       /**
+        * @see AddApplicationOptions#getTemplateParameters()
+        */
+       public static AddApplicationOptions templateParameters(Map<String,Object> templateParameters) {
+           return new AddApplicationOptions().templateParameters(templateParameters);
+       }
 
       /**
        * @see AddApplicationOptions#getHotEnvironment()
