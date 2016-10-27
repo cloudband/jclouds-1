@@ -48,7 +48,7 @@ import static org.jclouds.util.Predicates2.retry;
 @Test(groups = "live", testName = "StackApiLiveTest")
 public class StackApiLiveTest extends BaseHeatApiLiveTest {
 
-   public static final String TEMPLATE_URL = "http://10.5.5.121/Installs/cPaaS/YAML/simple_stack.yaml";
+   public static final String TEMPLATE_URL = "http://135.248.16.107/Installs/cPaaS/YAML/simple_stack.yaml";
    protected String stackName = System.getProperty("user.name").replace('.', '-').toLowerCase();
 
    public void testList() {
