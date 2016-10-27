@@ -27,7 +27,7 @@
 
   <groupId>org.apache.jclouds.api</groupId>
   <artifactId>openstack-swift</artifactId>
-  <version>1.8.1-CB-29</version>
+  <version>1.8.1-CB-30</version>
   <name>jclouds openstack-swift api</name>
   <description>jclouds components to access an implementation of OpenStack Swift</description>
   <packaging>bundle</packaging>
