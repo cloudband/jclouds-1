@@ -46,6 +46,7 @@ public class StackApiMockTest extends BaseHeatApiMockTest {
    public static final String TEST_STACK_ID = "testStack";
    public static final String RESOURCES_TEST_NAME = "testResources";
    public static final String TEST_STACK_RESOURCE_NAME = "cinder_volume";
+   public static final int NESTED_DEPTH = 9999;
 
 
    public void testGetAutoStack() throws Exception {
@@ -167,6 +168,36 @@ public class StackApiMockTest extends BaseHeatApiMockTest {
          server.shutdown();
       }
    }
+
+    public void testListResourceWithNested() throws Exception {
+        MockWebServer server = mockOpenStackServer();
+        server.enqueue(addCommonHeaders(new MockResponse().setBody(stringFromResource("/access.json"))));
+        server.enqueue(addCommonHeaders(
+                new MockResponse().setResponseCode(200).setBody(stringFromResource("/nested_stack_resourse_list_response.json"))));
+
+        try {
+            HeatApi heatApi = api(server.getUrl("/").toString(), "openstack-heat", overrides);
+            StackApi api = heatApi.getStackApi("RegionOne");
+
+            List<StackResource> stackResources = api.listStackResources(TEST_STACK_NAME, TEST_STACK_ID, NESTED_DEPTH).toList();
+
+         /*
+          * Check request
+          */
+            assertThat(server.getRequestCount()).isEqualTo(2);
+            assertAuthentication(server);
+            assertRequest(server.takeRequest(), "GET", BASE_URI + "/stacks/"+TEST_STACK_NAME+"/"+TEST_STACK_ID+"/resources?nested_depth="+String.valueOf(NESTED_DEPTH));
+
+         /*
+          * Check response
+          */
+            assertThat(stackResources).isNotEmpty();
+            assertThat(stackResources.size()).isEqualTo(3);
+
+        } finally {
+            server.shutdown();
+        }
+    }
 
    public void testGetResource() throws Exception {
       MockWebServer server = mockOpenStackServer();

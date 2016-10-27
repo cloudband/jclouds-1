@@ -41,6 +41,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import java.util.Map;
 
@@ -100,6 +101,13 @@ public interface StackApi {
    @Nullable
    boolean update(@PathParam("stack_name") String name, @PathParam("stack_id") String id, UpdateOptions... options);
 
+
+   @Named("stack:list_resources_with_nested_depth")
+   @GET
+   @SelectJson("resources")
+   @Path("/{stack_name}/{stack_id}/resources")
+   @Fallback(EmptyFluentIterableOnNotFoundOr404.class)
+   FluentIterable<StackResource> listStackResources(@PathParam("stack_name") String stackName, @PathParam("stack_id") String stackId, @QueryParam("nested_depth") int nestedDepth);
 
    @Named("stack:list_resources")
    @GET
