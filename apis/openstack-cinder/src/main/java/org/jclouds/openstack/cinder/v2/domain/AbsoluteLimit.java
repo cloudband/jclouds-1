@@ -18,7 +18,6 @@ package org.jclouds.openstack.cinder.v2.domain;
 
 import com.google.common.base.Objects;
 
-import javax.inject.Named;
 import java.beans.ConstructorProperties;
 
 public class AbsoluteLimit {
@@ -38,14 +37,14 @@ public class AbsoluteLimit {
 
         protected int totalSnapshotsUsed;
         protected int maxTotalBackups;
-        protected int maxTotalVolumeGigabytes;
+        protected double maxTotalVolumeGigabytes;
         protected int maxTotalSnapshots;
-        protected int maxTotalBackupGigabytes;
-        protected int totalBackupGigabytesUsed;
+        protected double maxTotalBackupGigabytes;
+        protected double totalBackupGigabytesUsed;
         protected int maxTotalVolumes;
         protected int totalVolumesUsed;
         protected int totalBackupsUsed;
-        protected int totalGigabytesUsed;
+        protected double totalGigabytesUsed;
 
         protected abstract T self();
 
@@ -59,7 +58,7 @@ public class AbsoluteLimit {
             return self();
         }
 
-        public T maxTotalVolumeGigabytes(int maxTotalVolumeGigabytes) {
+        public T maxTotalVolumeGigabytes(double maxTotalVolumeGigabytes) {
             this.maxTotalVolumeGigabytes = maxTotalVolumeGigabytes;
             return self();
         }
@@ -69,12 +68,12 @@ public class AbsoluteLimit {
             return self();
         }
 
-        public T maxTotalBackupGigabytes(int maxTotalBackupGigabytes) {
+        public T maxTotalBackupGigabytes(double maxTotalBackupGigabytes) {
             this.maxTotalBackupGigabytes = maxTotalBackupGigabytes;
             return self();
         }
 
-        public T totalBackupGigabytesUsed(int totalBackupGigabytesUsed) {
+        public T totalBackupGigabytesUsed(double totalBackupGigabytesUsed) {
             this.totalBackupGigabytesUsed = totalBackupGigabytesUsed;
             return self();
         }
@@ -94,7 +93,7 @@ public class AbsoluteLimit {
             return self();
         }
 
-        public T totalGigabytesUsed(int totalGigabytesUsed) {
+        public T totalGigabytesUsed(double totalGigabytesUsed) {
             this.totalGigabytesUsed = totalGigabytesUsed;
             return self();
         }
@@ -120,20 +119,20 @@ public class AbsoluteLimit {
 
     private final int totalSnapshotsUsed;
     private final int maxTotalBackups;
-    private final int maxTotalVolumeGigabytes;
+    private final double maxTotalVolumeGigabytes;
     private final int maxTotalSnapshots;
-    private final int maxTotalBackupGigabytes;
-    private final int totalBackupGigabytesUsed;
+    private final double maxTotalBackupGigabytes;
+    private final double totalBackupGigabytesUsed;
     private final int maxTotalVolumes;
     private final int totalVolumesUsed;
     private final int totalBackupsUsed;
-    private final int totalGigabytesUsed;
+    private final double totalGigabytesUsed;
 
     @ConstructorProperties({
             "totalSnapshotsUsed", "maxTotalBackups", "maxTotalVolumeGigabytes", "maxTotalSnapshots", "maxTotalBackupGigabytes",
             "totalBackupGigabytesUsed", "maxTotalVolumes", "totalVolumesUsed", "totalBackupsUsed", "totalGigabytesUsed"
     })
-    public AbsoluteLimit(int totalSnapshotsUsed, int maxTotalBackups, int maxTotalVolumeGigabytes, int maxTotalSnapshots, int maxTotalBackupGigabytes, int totalBackupGigabytesUsed, int maxTotalVolumes, int totalVolumesUsed, int totalBackupsUsed, int totalGigabytesUsed) {
+    public AbsoluteLimit(int totalSnapshotsUsed, int maxTotalBackups, double maxTotalVolumeGigabytes, int maxTotalSnapshots, double maxTotalBackupGigabytes, double totalBackupGigabytesUsed, int maxTotalVolumes, int totalVolumesUsed, int totalBackupsUsed, double totalGigabytesUsed) {
         this.totalSnapshotsUsed = totalSnapshotsUsed;
         this.maxTotalBackups = maxTotalBackups;
         this.maxTotalVolumeGigabytes = maxTotalVolumeGigabytes;
@@ -155,7 +154,7 @@ public class AbsoluteLimit {
         return maxTotalBackups;
     }
 
-    public int getMaxTotalVolumeGigabytes() {
+    public double getMaxTotalVolumeGigabytes() {
         return maxTotalVolumeGigabytes;
     }
 
@@ -163,11 +162,11 @@ public class AbsoluteLimit {
         return maxTotalSnapshots;
     }
 
-    public int getMaxTotalBackupGigabytes() {
+    public double getMaxTotalBackupGigabytes() {
         return maxTotalBackupGigabytes;
     }
 
-    public int getTotalBackupGigabytesUsed() {
+    public double getTotalBackupGigabytesUsed() {
         return totalBackupGigabytesUsed;
     }
 
@@ -183,7 +182,7 @@ public class AbsoluteLimit {
         return totalBackupsUsed;
     }
 
-    public int getTotalGigabytesUsed() {
+    public double getTotalGigabytesUsed() {
         return totalGigabytesUsed;
     }
 

@@ -7,9 +7,9 @@
                 "goodness_function": null,
                 "timestamp": "2016-05-24T18:27:15.881131",
                 "volume_backend_name": "adv_zone0",
-                "free_capacity_gb": 2980,
+                "free_capacity_gb": 4390.6658935546875,
                 "driver_version": "1.1.0",
-                "total_capacity_gb": 3054,
+                "total_capacity_gb": 4390.6658935546875,
                 "reserved_percentage": 0,
                 "vendor_name": "Open Source",
                 "storage_protocol": "ceph"
