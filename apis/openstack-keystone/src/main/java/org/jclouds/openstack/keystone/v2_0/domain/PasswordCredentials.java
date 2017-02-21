@@ -127,7 +127,7 @@ public class PasswordCredentials {
 
    protected ToStringHelper string() {
       return Objects.toStringHelper(this)
-            .add("username", username).add("password", password == null ? null : "*****");
+            .add("username", username).add("password", password == null ? null : password.replaceAll(".", "*"));
    }
 
    @Override
