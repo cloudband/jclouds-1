@@ -52,8 +52,8 @@ public class LimitsApiExpectTest extends BaseCinderApiExpectTest {
     }
 
     private AbsoluteLimit createAbsoluteLimit() {
-        return AbsoluteLimit.builder().totalSnapshotsUsed(0).maxTotalBackups(10).maxTotalVolumeGigabytes(10000).maxTotalSnapshots(50)
-                .maxTotalBackupGigabytes(1000).totalBackupGigabytesUsed(0).
+        return AbsoluteLimit.builder().totalSnapshotsUsed(0).maxTotalBackups(10).maxTotalVolumeGigabytes(4390.6658935546875).maxTotalSnapshots(50)
+                .maxTotalBackupGigabytes(4390.6658935546875).totalBackupGigabytesUsed(0).
                         maxTotalVolumes(100).totalVolumesUsed(2).totalBackupsUsed(0).totalGigabytesUsed(100).build();
 
     }
