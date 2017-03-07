@@ -44,10 +44,10 @@ public class PoolCapability {
         protected String goodnessFunction;
         protected String timestamp;
         protected String volumeBackendName;
-        protected long freeCapacityGB;
+        protected double freeCapacityGB;
         protected String driverVersion;
-        protected long totalCapacityGB;
-        protected int reservedPercentage;
+        protected double totalCapacityGB;
+        protected float reservedPercentage;
         protected String vendorName;
         protected String storageProtocol;
 
@@ -72,7 +72,7 @@ public class PoolCapability {
             return self();
         }
 
-        public T freeCapacityGB(long freeCapacityGB) {
+        public T freeCapacityGB(double freeCapacityGB) {
             this.freeCapacityGB = freeCapacityGB;
             return self();
         }
@@ -82,12 +82,12 @@ public class PoolCapability {
             return self();
         }
 
-        public T totalCapacityGB(long totalCapacityGB) {
+        public T totalCapacityGB(double totalCapacityGB) {
             this.totalCapacityGB = totalCapacityGB;
             return self();
         }
 
-        public T reservedPercentage(int reservedPercentage) {
+        public T reservedPercentage(float reservedPercentage) {
             this.reservedPercentage = reservedPercentage;
             return self();
         }
@@ -130,13 +130,13 @@ public class PoolCapability {
     @Named("volume_backend_name")
     private final String volumeBackendName;
     @Named("free_capacity_gb")
-    private final long freeCapacityGB;
+    private final double freeCapacityGB;
     @Named("driver_version")
     private final String driverVersion;
     @Named("total_capacity_gb")
-    private final long totalCapacityGB;
+    private final double totalCapacityGB;
     @Named("reserved_percentage")
-    private final int reservedPercentage;
+    private final float reservedPercentage;
     @Named("vendor_name")
     private final String vendorName;
     @Named("storage_protocol")
@@ -145,7 +145,7 @@ public class PoolCapability {
     @ConstructorProperties({
             "filter_function", "goodness_function", "timestamp", "volume_backend_name", "free_capacity_gb", "driver_version", "total_capacity_gb", "reserved_percentage", "vendor_name", "storage_protocol"
     })
-    protected PoolCapability(@Nullable String filterFunction, @Nullable String goodnessFunction, String timestamp, String volumeBackendName, long freeCapacityGB, String driverVersion, long totalCapacityGB, int reservedPercentage, String vendorName, String storageProtocol) {
+    protected PoolCapability(@Nullable String filterFunction, @Nullable String goodnessFunction, String timestamp, String volumeBackendName, double freeCapacityGB, String driverVersion, double totalCapacityGB, float reservedPercentage, String vendorName, String storageProtocol) {
         this.filterFunction = filterFunction;
         this.goodnessFunction = goodnessFunction;
         this.timestamp = timestamp;
@@ -189,7 +189,7 @@ public class PoolCapability {
     /**
      * @return the freeCapacityGB
      */
-    public long getFreeCapacityGB() {
+    public double getFreeCapacityGB() {
         return freeCapacityGB;
     }
 
@@ -203,14 +203,14 @@ public class PoolCapability {
     /**
      * @return the totalCapacityGB
      */
-    public long getTotalCapacityGB() {
+    public double getTotalCapacityGB() {
         return totalCapacityGB;
     }
 
     /**
      * @return the reservedPercentage
      */
-    public int getReservedpercentage() {
+    public float getReservedpercentage() {
         return reservedPercentage;
     }
 
