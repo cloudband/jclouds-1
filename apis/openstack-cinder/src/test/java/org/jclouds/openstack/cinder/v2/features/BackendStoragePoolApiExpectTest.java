@@ -86,8 +86,8 @@ public class BackendStoragePoolApiExpectTest extends BaseCinderApiExpectTest {
     private BackendStoragePool createBackendStoragePool2() {
         PoolCapability poolCapability = PoolCapability.builder()
                 .timestamp("2016-05-24T18:27:29.579027")
-                .volumeBackendName("default-rbd").freeCapacityGB(2980)
-                .driverVersion("1.1.0").totalCapacityGB(3002)
+                .volumeBackendName("default-rbd").freeCapacityGB(4390.6658935546875)
+                .driverVersion("1.1.0").totalCapacityGB(4390.6658935546875)
                 .reservedPercentage(0).vendorName("Open Source")
                 .storageProtocol("ceph").build();
         return new BackendStoragePool("os-glance-00@default-rbd#default-rbd",

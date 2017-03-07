@@ -22,9 +22,9 @@
                 "goodness_function": null,
                 "timestamp": "2016-05-24T18:27:29.579027",
                 "volume_backend_name": "default-rbd",
-                "free_capacity_gb": 2980,
+                "free_capacity_gb": 4390.6658935546875,
                 "driver_version": "1.1.0",
-                "total_capacity_gb": 3002,
+                "total_capacity_gb": 4390.6658935546875,
                 "reserved_percentage": 0,
                 "vendor_name": "Open Source",
                 "storage_protocol": "ceph"
