@@ -105,8 +105,8 @@ public class Resource implements Comparable<Resource> {
    @ConstructorProperties({
          "id", "name", "links"
    })
-   protected Resource(String id, @Nullable String name, @Nullable Set<Link> links) {
-      this.id = checkNotNull(id, "id");
+   protected Resource(@Nullable String id, @Nullable String name, @Nullable Set<Link> links) {
+      this.id = id;
       this.name = name;
       this.links = links == null ? null : ImmutableSet.copyOf(links);
    }
