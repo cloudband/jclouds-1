@@ -65,7 +65,6 @@ public interface SnapshotApi {
 
    @Named("snapshot:list")
    @GET
-   @Path("/snapshots")
    @SelectJson("snapshots")
    @Consumes(MediaType.APPLICATION_JSON)
    @Fallback(EmptyFluentIterableOnNotFoundOr404.class)
@@ -85,7 +84,7 @@ public interface SnapshotApi {
 
    @Named("snapshot:list")
    @GET
-   @Path("/snapshots/detail")
+   @Path("/detail")
    @SelectJson("snapshots")
    @Consumes(MediaType.APPLICATION_JSON)
    @Fallback(EmptyFluentIterableOnNotFoundOr404.class)
