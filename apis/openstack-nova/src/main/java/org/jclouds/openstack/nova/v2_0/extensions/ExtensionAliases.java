@@ -38,6 +38,7 @@ public final class ExtensionAliases {
    public static final String VOLUME_ATTACHMENT = "os-volumes";
    public static final String FLOATING_IP_POOLS = "os-floating-ip-pools";
    public static final String VOLUMES = "os-volumes";
+   public static final String SERVICES = "os-services";
 
    private ExtensionAliases() {
       throw new AssertionError("intentionally unimplemented");

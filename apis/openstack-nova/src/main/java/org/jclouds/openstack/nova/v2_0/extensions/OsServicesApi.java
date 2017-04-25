@@ -26,7 +26,8 @@ import javax.ws.rs.core.MediaType;
  * Provides access to OpenStack Compute (Nova) OS-Services extension API.
  */
 @Beta
-@Extension(of = ServiceType.COMPUTE, namespace = ExtensionNamespaces.OS_SERVICES)
+@Extension(of = ServiceType.COMPUTE, namespace = ExtensionNamespaces.OS_SERVICES,
+        name = ExtensionNames.SERVICES, alias = ExtensionAliases.SERVICES)
 @RequestFilters(AuthenticateRequest.class)
 @Consumes(MediaType.APPLICATION_JSON)
 @Path("/os-services")

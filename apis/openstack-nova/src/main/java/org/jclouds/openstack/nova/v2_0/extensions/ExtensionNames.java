@@ -38,6 +38,7 @@ public final class ExtensionNames {
    public static final String VOLUME_ATTACHMENT = "VolumeAttachmentUpdate";
    public static final String FLOATING_IP_POOLS = "FloatingIpPools";
    public static final String VOLUMES = "Volumes";
+   public static final String SERVICES = "Services";
 
    private ExtensionNames() {
       throw new AssertionError("intentionally unimplemented");
