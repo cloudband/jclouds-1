@@ -80,6 +80,7 @@ public interface TenantApi {
    @Path("/{id}")
    @Fallback(NullOnNotFoundOr404.class)
    @Nullable
+   @Deprecated
    Tenant get(@PathParam("id") String tenantId);
 
    /**

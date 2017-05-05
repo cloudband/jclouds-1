@@ -18,6 +18,7 @@ package org.jclouds.openstack.keystone.v2_0.extensions;
 
 import javax.inject.Named;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -26,7 +27,9 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.jclouds.Fallbacks;
 import org.jclouds.Fallbacks.FalseOnNotFoundOr404;
+import org.jclouds.Fallbacks.NullOnNotFoundOr404;
 import org.jclouds.javax.annotation.Nullable;
 import org.jclouds.openstack.keystone.v2_0.domain.Tenant;
 import org.jclouds.openstack.keystone.v2_0.filters.AuthenticateRequest;
@@ -121,4 +124,12 @@ public interface TenantAdminApi {
    @Fallback(FalseOnNotFoundOr404.class)
    boolean deleteRoleOnTenant(@PathParam("id") String tenantId, @PathParam("userId") String userdId,
          @PathParam("roleId") String roleId);
+
+   @Named("tenant:get")
+   @GET
+   @SelectJson("tenant")
+   @Path("/{id}")
+   @Fallback(Fallbacks.NullOnNotFoundOr404.class)
+   @Nullable
+   Tenant get(@PathParam("id") String tenantId);
 }

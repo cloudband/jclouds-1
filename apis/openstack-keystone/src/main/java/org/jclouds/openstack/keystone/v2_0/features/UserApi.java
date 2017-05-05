@@ -52,6 +52,7 @@ import org.jclouds.rest.annotations.Transform;
 @Consumes(MediaType.APPLICATION_JSON)
 @org.jclouds.rest.annotations.Endpoint(Identity.class)
 @RequestFilters(AuthenticateRequest.class)
+@Deprecated
 public interface UserApi {
 
    /**
